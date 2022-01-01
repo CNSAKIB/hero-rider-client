@@ -7,7 +7,7 @@ import Swal from 'sweetalert2';
 const AdminPanel = () => {
     const [users, setUsers] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/users')
+        fetch('https://pacific-mountain-24506.herokuapp.com/users')
             .then(res => res.json())
             .then(data => setUsers(data));
     }, [])
@@ -23,7 +23,7 @@ const AdminPanel = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`'http://localhost:5000/${id}`, {
+                fetch(`https://pacific-mountain-24506.herokuapp.com/${id}`, {
                     method: "DELETE",
                     headers: { "content-type": "application/json" }
 
@@ -48,7 +48,7 @@ const AdminPanel = () => {
 
     const handleApprove = (id) => {
         // console.log(id)
-        fetch(`'http://localhost:5000/approveOrder/${id}`, {
+        fetch(`https://pacific-mountain-24506.herokuapp.com/approveOrder/${id}`, {
             method: "PUT",
             headers: { "content-type": "application/json" }
 

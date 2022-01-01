@@ -81,7 +81,7 @@ const useFirebase = () => {
         return () => unsubscribe;
     }, [auth])
     useEffect(() => {
-        fetch(`http://localhost:5000/users/${user.email}`)
+        fetch(`https://pacific-mountain-24506.herokuapp.com/users/${user.email}`)
             .then(res => res.json())
             .then(data => setAdmin(data.admin))
 
@@ -98,7 +98,7 @@ const useFirebase = () => {
     }
     const saveUser = (email, displayName, age, address, phone, nid, displayPicture, vehichleType, role, status, drivingLicence, area, vehichleName, vehichleModel, namePlate, method) => {
         const user = { email, displayName, age, address, phone, nid, displayPicture, vehichleType, role, status, drivingLicence, area, vehichleName, vehichleModel, namePlate };
-        fetch('http://localhost:5000/users', {
+        fetch('https://pacific-mountain-24506.herokuapp.com/users', {
             method: method,
             headers: {
                 'content-type': 'application/json'
