@@ -13,14 +13,14 @@ const useFirebase = () => {
     const auth = getAuth();
 
     // user registration 
-    const registerUser = (email, password, name, age, address, phone, nid, displayPicture, vehichleType, role, drivingLicence, area, vehichleName, vehichleModel, namePlate, history) => {
+    const registerUser = (email, password, name, age, address, phone, nid, displayPicture, vehichleType, role, status, drivingLicence, area, vehichleName, vehichleModel, namePlate, history) => {
         setIsLoading(true);
         createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 setAuthError('');
                 const newUser = { email, displayName: name };
                 setUser(newUser);
-                saveUser(email, name, age, address, phone, nid, displayPicture, vehichleType, role, drivingLicence, area, vehichleName, vehichleModel, namePlate, 'POST');
+                saveUser(email, name, age, address, phone, nid, displayPicture, vehichleType, role, status, drivingLicence, area, vehichleName, vehichleModel, namePlate, 'POST');
                 // Set data to firebase
                 updateProfile(auth.currentUser, {
                     displayName: name
@@ -45,7 +45,7 @@ const useFirebase = () => {
                     'You are now logged in!',
                     'success'
                 )
-                const destination = '/dashboard';
+                const destination = location?.state?.from || '/';
                 history.replace(destination);
                 setAuthError('');
 
@@ -96,8 +96,8 @@ const useFirebase = () => {
             .finally(() => setIsLoading(false));
 
     }
-    const saveUser = (email, displayName, age, address, phone, nid, displayPicture, vehichleType, role, drivingLicence, area, vehichleName, vehichleModel, namePlate, method) => {
-        const user = { email, displayName, age, address, phone, nid, displayPicture, vehichleType, role, drivingLicence, area, vehichleName, vehichleModel, namePlate };
+    const saveUser = (email, displayName, age, address, phone, nid, displayPicture, vehichleType, role, status, drivingLicence, area, vehichleName, vehichleModel, namePlate, method) => {
+        const user = { email, displayName, age, address, phone, nid, displayPicture, vehichleType, role, status, drivingLicence, area, vehichleName, vehichleModel, namePlate };
         fetch('http://localhost:5000/users', {
             method: method,
             headers: {

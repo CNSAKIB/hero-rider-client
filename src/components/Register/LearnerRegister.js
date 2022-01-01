@@ -9,6 +9,7 @@ const LearnerRegister = () => {
     const [loginData, setLoginData] = useState({});
     const { registerUser, isLoading, authError } = useAuth();
     const role = 'Learner'
+    const status = 'unmarked'
     const history = useHistory();
     const handleOnBlur = e => {
         const feild = e.target.name;
@@ -29,7 +30,7 @@ const LearnerRegister = () => {
             })
         }
         else {
-            registerUser(loginData.email, loginData.password, loginData.name, loginData.age, loginData.address, loginData.phone, loginData.nid, loginData.displayPicture, loginData.vehichleType, role, history);
+            registerUser(loginData.email, loginData.password, loginData.name, loginData.age, loginData.address, loginData.phone, loginData.nid, loginData.displayPicture, loginData.vehichleType, role, status, history);
             // console.log(loginData.name);
         }
     }

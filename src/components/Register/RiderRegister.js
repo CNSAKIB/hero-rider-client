@@ -9,6 +9,7 @@ const RiderRegister = () => {
     const [loginData, setLoginData] = useState({});
     const { registerUser, isLoading, authError } = useAuth();
     const role = 'Rider'
+    const status = "unmarked"
     const history = useHistory();
     const handleOnBlur = e => {
         const feild = e.target.name;
@@ -28,7 +29,7 @@ const RiderRegister = () => {
             })
         }
         else {
-            registerUser(loginData.email, loginData.password, loginData.name, loginData.age, loginData.address, loginData.phone, loginData.nid, loginData.displayPicture, loginData.vehichleType, role, loginData.drivingLicence, loginData.area, loginData.vehichleName, loginData.vehichleModel, loginData.namePlate, history);
+            registerUser(loginData.email, loginData.password, loginData.name, loginData.age, loginData.address, loginData.phone, loginData.nid, loginData.displayPicture, loginData.vehichleType, role, status, loginData.drivingLicence, loginData.area, loginData.vehichleName, loginData.vehichleModel, loginData.namePlate, history);
             // console.log(loginData.name);
         }
     }

@@ -41,7 +41,7 @@ function App() {
               <Dashboard></Dashboard>
             </PrivateRoute>
             <Route exact path="/">
-              {/* <Home></Home> */}
+              <Home></Home>
             </Route>
             <Route path="*">
               <NotFound></NotFound>
