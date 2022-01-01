@@ -1,0 +1,10 @@
+.footer-container{
+    background-color:rgb(247, 36, 78);
+    width: 100%;
+}
+.footer-container i{
+    font-size: 28px;
+    margin-top: 10px;
+    margin-right: 20px;
+    cursor: pointer;
+}
